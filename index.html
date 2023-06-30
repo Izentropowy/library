@@ -9,24 +9,109 @@
     <title>Library</title>
 </head>
 <body>
-    <header>
-        <h1>My Library</h1>
-    </header>
-    <main>
-        <div class="card">
-            <form>
-                <h3>Add a book</h3>
-                <input type="text" id="title" placeholder="Title">
-                <input type="text" id="author" placeholder="Author">
-                <input type="number" id="pages" placeholder="Pages">
-                <label for="isRead">Have you read it?</label>
-                <input type="checkbox" id="isRead">
-            </form>
+    <div class="wrapper">
+        <header>
+            <div>
+                <h1>My Library</h1>
+                <img src="/book.png" alt="">
+            </div>
+            <button class="add-book">Add a book</button>
+        </header>
+        <div class="main">
+            <div class="card">
+                <div class="title">
+                    <h2>The Hobbit</h2>
+                </div>
+                <div class="author">
+                    <h3>J.R.R. Tolkien</h3>
+                </div>
+                <div class="pages">
+                    <h4>300 pages</h4>
+                </div>
+                <div>
+                    <button class="read">Not read</button>
+                    <button class="remove">Remove</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="title">
+                    <h2>The Lord of the Rings</h2>
+                </div>
+                <div class="author">
+                    <h3>J.R.R. Tolkien</h3>
+                </div>
+                <div class="pages">
+                    <h4>300 pages</h4>
+                </div>
+                <div>
+                    <button class="read">Not read</button>
+                    <button class="remove">Remove</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="title">
+                    <h2>Harry Potter and Philosopher's Stone</h2>
+                </div>
+                <div class="author">
+                    <h3>J.K. Rowling</h3>
+                </div>
+                <div class="pages">
+                    <h4>300 pages</h4>
+                </div>
+                <div>
+                    <button class="read">Not read</button>
+                    <button class="remove">Remove</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="title">
+                    <h2>Harry Potter and Chamber of Secrets</h2>
+                </div>
+                <div class="author">
+                    <h3>J.K. Rowling</h3>
+                </div>
+                <div class="pages">
+                    <h4>300 pages</h4>
+                </div>
+                <div>
+                    <button class="read">Not read</button>
+                    <button class="remove">Remove</button>
+                </div>
+            </div>
         </div>
-        <button>+</button>
-    </main>
+    </div>
+    <div class="modal">
+        <div class="adding-box">
+            <h2>Add a book</h2>
+            <form>
+                <div class="input-data">
+                    <input type="text" id="title">
+                    <label for="title">Title</label>
+                </div>
+                <div class="input-data">
+                    <input type="text" id="authot">
+                    <label for="author">Author</label>
+                </div>
+                <div class="input-data">
+                    <input type="number" id="pages">
+                    <label for="pages">Pages</label>
+                </div>
+                <div class="input-checkbox">
+                    <input type="checkbox" id="check">
+                    <label for="check">Read</label>
+                </div>
+                <a href="#">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Submit
+                  </a>
+            </form>
+         </div>
+    </div>
     <footer>
-        <p>Copyright © Izentropowy</p>
+        Copyright © Izentropowy
     </footer>
 </body>
 </html>
