@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -100,7 +101,7 @@ button:active {
 
 .modal {
     display: none;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     position: fixed; 
@@ -120,7 +121,7 @@ form {
 }
 
 .adding-box {
-    width: 250px;
+    width: 350px;
     padding: 40px;
     background: rgba(0,0,0,.7);
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
@@ -178,7 +179,8 @@ form {
     text-transform: uppercase;
     transition: .5s;
     margin-top: 40px;
-    letter-spacing: 4px
+    letter-spacing: 4px;
+    text-align: center;
 }
 
 .adding-box a:hover {
