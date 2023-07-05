@@ -9,7 +9,7 @@
 }
 
 html, body{
-    background-image: url(/libPhoto.jpg);
+    background-image: url(/images/libPhoto.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -162,14 +162,15 @@ form {
     transition: .5s;
 }
 
-.input-data input:focus ~ label {
+.input-data input:focus ~ label,
+.input-data input:valid ~ label {
     top: -20px;
     left: 0;
     color: #becaca;
     font-size: 12px;
 }
 
-.adding-box form a {
+.adding-box #submit {
     position: relative;
     display: inline-block;
     padding: 10px 20px;
@@ -183,7 +184,7 @@ form {
     text-align: center;
 }
 
-.adding-box a:hover {
+.adding-box #submit:hover {
     background: #becaca;
     color: #fff;
     border-radius: 5px;
@@ -193,7 +194,7 @@ form {
                 0 0 100px #9b9fa7;
 }
 
-.adding-box a:active {
+.adding-box #submit:active {
     transform: scale(1.2);
 }
 
