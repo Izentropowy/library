@@ -6,25 +6,6 @@ const form = document.querySelector('form');
 const submitButton = document.getElementById('submit');
 const resetButtons = [];
 
-
-function openModal() {
-    outsideModal.style.display = 'flex';
-}
-
-function closeModal() {
-    outsideModal.style.display = 'none';
-}
-
-function insideModalClicked(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-}
-
-function outsideModalClicked() {
-    closeModal();
-}
-
 let myLibrary = [];
 
 function Book (title, author, pages, isRead) {
@@ -34,14 +15,35 @@ function Book (title, author, pages, isRead) {
     this.isRead = isRead
 }
 
+function openModal() {
+    form.classList.add('form-visible');
+}
+
+function closeModal() {
+    form.classList.remove('form-visible');
+    form.reset();
+}
+
+function insideModalClicked(e) {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+}
+
+function outsideModalClicked() {
+    closeModal();
+}
+
 function addBookToLibrary(e) {
-    e.preventDefault();
-    const title = document.getElementById('title').value;
-    const author = document.getElementById('author').value;
-    const pages = document.getElementById('pages').value;
-    const isRead = document.getElementById('check').checked;
-    const newBook = new Book(title, author, pages, isRead);
-    myLibrary.push(newBook);
+    form.reportValidity();
+    if (form.reportValidity()){
+        e.preventDefault();
+        const title = document.getElementById('title').value;
+        const author = document.getElementById('author').value;
+        const pages = document.getElementById('pages').value;
+        const isRead = document.getElementById('check').checked;
+        const newBook = new Book(title, author, pages, isRead);
+        myLibrary.push(newBook);
+    }
 }
 
 function createCard(book) {
@@ -70,8 +72,12 @@ function setIndexes() {
     });
 }
 
-function removeCard() {
-
+function removeCard(e) {
+    if (e.target.classList.contains('remove')) {
+        myLibrary.splice(e.target.id, 1);
+        setIndexes();
+        displayBooks();
+    }
 }
 
 addBookButton.addEventListener('click', openModal);
@@ -80,15 +86,10 @@ outsideModal.addEventListener('click', outsideModalClicked);
 submitButton.addEventListener('click', addBookToLibrary);
 submitButton.addEventListener('click', setIndexes);
 submitButton.addEventListener('click', displayBooks);
-submitButton.addEventListener('click', closeModal);
-document.body.addEventListener('click', (e) => {
-    if (e.target.classList.contains('remove')) {
-        myLibrary.splice(e.target.id, 1);
-        setIndexes();
-        displayBooks();
-        console.log(myLibrary);
-    }
-})
+submitButton.addEventListener('click', () => {
+    if (form.reportValidity()) closeModal();
+});
+document.body.addEventListener('click', removeCard);
 
 
 
