@@ -4,6 +4,7 @@ const outsideModal = document.querySelector('.modal');
 const main = document.querySelector('.main');
 const form = document.querySelector('form');
 const submitButton = document.getElementById('submit');
+const resetButtons = [];
 
 
 function openModal() {
@@ -51,10 +52,11 @@ function createCard(book) {
                         <h4>${"Pages: " + book.pages} </h4>
                         <div>
                             <button class="read">Not read</button>
-                            <button class="remove">Remove</button>
+                            <button class="remove" id="${book.index}">Remove</button>
                         </div>`
     cardDiv.innerHTML = cardContent;
     main.appendChild(cardDiv);
+    resetButtons.push(document.getElementById(`${book.index}`));
 }
 
 function displayBooks() {
@@ -62,29 +64,31 @@ function displayBooks() {
     myLibrary.forEach(element => createCard(element));
 }
 
+function setIndexes() {
+    myLibrary.forEach(element => {
+        element.index = myLibrary.indexOf(element);
+    });
+}
+
+function removeCard() {
+
+}
+
 addBookButton.addEventListener('click', openModal);
 insideModal.addEventListener('click', insideModalClicked);
 outsideModal.addEventListener('click', outsideModalClicked);
 submitButton.addEventListener('click', addBookToLibrary);
+submitButton.addEventListener('click', setIndexes);
 submitButton.addEventListener('click', displayBooks);
+submitButton.addEventListener('click', closeModal);
+document.body.addEventListener('click', (e) => {
+    if (e.target.classList.contains('remove')) {
+        myLibrary.splice(e.target.id, 1);
+        setIndexes();
+        displayBooks();
+        console.log(myLibrary);
+    }
+})
 
-// function createCard() {
-//     var cardDiv = document.createElement("div");
-//     var titleHeading = document.createElement("h2");
-//     var authorHeading = document.createElement("h3");
-//     var pagesHeading = document.createElement("h4");
-//     var buttonsDiv = document.createElement("div");
-//     var readButton = document.createElement("button");
-//     var removeButton = document.createElement("button");
-    
-//     cardDiv.classList.add("card");
-//     removeButton.classList.add("remove")
-//     main.appendChild(cardDiv);
-//     cardDiv.appendChild(titleHeading);
-//     cardDiv.appendChild(authorHeading);
-//     cardDiv.appendChild(pagesHeading);
-//     cardDiv.appendChild(buttonsDiv);
-//     buttonsDiv.appendChild(readButton);
-//     buttonsDiv.appendChild(removeButton);
-// }
+
 
