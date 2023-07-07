@@ -4,7 +4,6 @@ const outsideModal = document.querySelector('.modal');
 const main = document.querySelector('.main');
 const form = document.querySelector('form');
 const submitButton = document.getElementById('submit');
-const resetButtons = [];
 
 let myLibrary = [];
 
@@ -13,6 +12,10 @@ function Book (title, author, pages, isRead) {
     this.author  = author,
     this.pages = pages,
     this.isRead = isRead
+}
+
+Book.prototype.toggleStatus = function() {
+    this.isRead = !this.isRead;
 }
 
 function openModal() {
@@ -48,17 +51,17 @@ function addBookToLibrary(e) {
 
 function createCard(book) {
     var cardDiv = document.createElement("div");
+    let statusClass = book.isRead ? "read" : "not-read";
     cardDiv.classList.add("card");
     const cardContent =  `<h2>${book.title}</h2>
                         <h3>${book.author}</h3>
                         <h4>${"Pages: " + book.pages} </h4>
-                        <div>
-                            <button class="read">Not read</button>
-                            <button class="remove" id="${book.index}">Remove</button>
+                        <div id="${book.index}">
+                            <button class="status ${statusClass}"></button>
+                            <button class="remove">Remove</button>
                         </div>`
     cardDiv.innerHTML = cardContent;
     main.appendChild(cardDiv);
-    resetButtons.push(document.getElementById(`${book.index}`));
 }
 
 function displayBooks() {
@@ -74,8 +77,16 @@ function setIndexes() {
 
 function removeCard(e) {
     if (e.target.classList.contains('remove')) {
-        myLibrary.splice(e.target.id, 1);
+        myLibrary.splice(e.target.parentNode.id, 1);
         setIndexes();
+        displayBooks();
+    }
+}
+
+function markStatus(e) {
+    if (e.target.classList.contains('status')) {
+        let currentBook = myLibrary[e.target.parentNode.id]
+        currentBook.toggleStatus();
         displayBooks();
     }
 }
@@ -90,6 +101,7 @@ submitButton.addEventListener('click', () => {
     if (form.reportValidity()) closeModal();
 });
 document.body.addEventListener('click', removeCard);
+document.body.addEventListener('click', markStatus);
 
 
 

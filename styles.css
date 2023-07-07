@@ -62,7 +62,7 @@ button:active {
 .add-book {
     padding: 10px;
     font-size: 16px;
-    background-color: rgb(36, 190, 119);
+    background-color: #e0bc99;
 }
 
 .main {
@@ -79,9 +79,9 @@ button:active {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    background: linear-gradient(45deg, #9ca3af, #374151);
+    background: linear-gradient(45deg, #e0bc99, #47494d);
     border-radius: 15px;
-    border: 2px solid #292524;
+    border: 2px solid #927e7a;
     gap: 5px;
     overflow: auto;
     width: 66%;
@@ -97,6 +97,18 @@ button:active {
 
 .remove {
     background-color: #ef4444;
+}
+
+.read {
+    background-color: #22c55e;
+}
+
+.read::after{
+    content: "Read";
+}
+
+.not-read::after {
+    content: "Not Read";
 }
 
 .modal {
