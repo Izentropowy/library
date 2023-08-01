@@ -7,16 +7,19 @@ const submitButton = document.getElementById('submit');
 
 let myLibrary = [];
 
-function Book (title, author, pages, isRead) {
-    this.title = title,
-    this.author  = author,
-    this.pages = pages,
-    this.isRead = isRead
+class Book {
+    constructor(title, author, pages, isRead) {
+        this.title = title,
+        this.author  = author,
+        this.pages = pages,
+        this.isRead = isRead
+    }
+    
+    toggleStatus() {
+        this.isRead = !this.isRead;
+    }
 }
 
-Book.prototype.toggleStatus = function() {
-    this.isRead = !this.isRead;
-}
 
 function openModal() {
     form.classList.add('form-visible');
