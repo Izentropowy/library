@@ -5,8 +5,6 @@ const main = document.querySelector('.main');
 const form = document.querySelector('form');
 const submitButton = document.getElementById('submit');
 
-let myLibrary = [];
-
 class Book {
     constructor(title, author, pages, isRead) {
         this.title = title,
@@ -20,6 +18,29 @@ class Book {
     }
 }
 
+class Library {
+    constructor() {
+        this.books = []
+    }
+}
+
+/* 
+Library:
+    - addBook
+    - setIndexes
+    - markStatus
+
+DisplayController:
+    - openModal
+    - closeModal
+    - insideModalClicked
+    - outsideModalClicked
+    - createCard
+    - removeCard
+    - displayBooks
+ */
+
+let myLibrary = new Library()
 
 function openModal() {
     form.classList.add('form-visible');
